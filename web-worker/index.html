@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Worker vs Non-Worker Performance</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎯 Web Worker Performance Comparison</h1>
+            <p>실시간 비디오 프레임 블러 처리 성능 비교</p>
+        </div>
+
+        <div class="video-section">
+            <div class="video-container">
+                <video id="video" width="540" height="304" autoplay muted loop>
+                    <source src="폴더에 동영상 원하는거 넣어서 테스트(용량클수록좋음).mp4" type="video/mp4" />
+                    브라우저가 video 태그를 지원하지 않습니다.
+                </video>
+            </div>
+        </div>
+
+        <div class="comparison-grid">
+            <div class="comparison-item worker">
+                <div class="comparison-title">
+                    <span class="icon">⚡</span>
+                    Web Worker 처리
+                </div>
+                <div class="canvas-container">
+                    <canvas id="workerCanvas" width="540" height="304"></canvas>
+                    <div class="stats-overlay" id="workerStats">
+                        <div>처리 시간: - ms</div>
+                        <div>FPS: -</div>
+                    </div>
+                </div>
+                <canvas id="graphWorker" width="540" height="100" class="graph-canvas"></canvas>
+                <div class="legend">
+                    <div class="legend-item">
+                        <div class="legend-color line" style="--color: #0077cc;"></div>
+                        <span>처리 시간</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color avg"></div>
+                        <span>평균값</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color std"></div>
+                        <span>표준편차 영역</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="comparison-item non-worker">
+                <div class="comparison-title">
+                    <span class="icon">🐌</span>
+                    Non-Worker 처리
+                </div>
+                <div class="canvas-container">
+                    <canvas id="nonworkerCanvas" width="540" height="304"></canvas>
+                    <div class="stats-overlay" id="nonworkerStats">
+                        <div>처리 시간: - ms</div>
+                        <div>FPS: -</div>
+                    </div>
+                </div>
+                <canvas id="graphNonWorker" width="540" height="100" class="graph-canvas"></canvas>
+                <div class="legend">
+                    <div class="legend-item">
+                        <div class="legend-color line" style="--color: #cc0000;"></div>
+                        <span>처리 시간</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color avg"></div>
+                        <span>평균값</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color std"></div>
+                        <span>표준편차 영역</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+
+</html>
